@@ -1,0 +1,140 @@
+<!doctype html>
+<html class="no-js" ng-app="shPortfolioApp">
+  <head>
+    <meta charset="utf-8">
+    <title ng-bind="pageTitle">Sebastián Holgado</title>
+    <meta name="description" content="{{ pageDescription }}">
+    <meta name="viewport" content="width=device-width">
+    <meta name="language" content="EN">
+    <meta name="robots" content="index,follow" />
+    <meta name="url" content="http://www.ohsebastian.com">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta property="og:description" content="{{ pageDescription }}">
+    <meta property="og:image" content="http://www.ohsebastian.com/social-banner.jpg">
+    <meta property="og:url" content="http://www.ohsebastian.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <style>
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+      }
+    </style>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89652060-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+  </head>
+  <body class="sh-body" ng-controller="MainCtrl" ng-class="{ '-lock-desktop' : lockScroll.desktop, '-lock-tablet' : lockScroll.tablet, '-lock-mobile' : lockScroll.mobile }">
+
+      <nav class="sh-navbar"
+        ng-class="{ '-transparent' : currentPage === 'about' }">
+        <div class="container">
+          <div class="logo">
+            <a href="#/">sebastian_holgado</a>
+          </div>
+
+          <div class="dropdown-button"
+            ng-click="main.showMenu = true; lockScroll.mobile = true">
+            <span class="fa fa-bars"></span>
+          </div>
+
+          <div class="overlay ng-cloak" ng-click="main.showMenu = false; lockScroll.mobile = false" ng-show="main.showMenu">
+            <span class="close">✕</i>
+          </div>
+
+          <ul class="sections" ng-class="{ '-show' : main.showMenu }">
+            <li ng-class="{ '-active' : currentPage === 'about' }"><a href="#/" ng-click="main.showMenu = false; lockScroll.mobile = false">About</a></li>
+            <li ng-class="{ '-active' : currentPage === 'portfolio' }"><a ng-href="#/portfolio" ng-click="main.showMenu = false; lockScroll.mobile = false">Projects</a></li>
+            <li ng-class="{ '-active' : currentPage === 'contact' }"><a ng-href="#/contact" ng-click="main.showMenu = false; lockScroll.mobile = false">Contact</a></li>
+            <li class="-hide-xs">
+              <a class="sh-button -teal -lg -full -block-sm -hide-sm" href="/files/HolgadoSebastian_CV_17_02.pdf" target="_blank"><span>My CV</span></a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+
+      <div class="sh-view" ng-view=""></div>
+
+      <footer class="sh-footer">
+        <div class="container">
+          <div class="social-footer">
+            <h3>Social</h3>
+            <a class="social-icon sh-tooltip--trigger" ng-repeat="social in main.socialInfo" ng-href="{{ social.url }}" target="_blank">
+              <span class="fa {{ social.icon }}"></span>
+              <span class="sh-tooltip -hide-xs">
+                {{ social.description }}
+              </span>
+            </a>
+          </div>
+        </div>
+      </footer>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-clipboard/angular-clipboard.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/frame-work-directives/sh-framework-module.js"></script>
+    <script src="scripts/frame-work-directives/sh-modal.js"></script>
+
+    <script src="scripts/services/sh-behance-service.js"></script>
+    <script src="scripts/services/sh-github-service.js"></script>
+    <script src="scripts/services/sh-mailer-service.js"></script>
+    <script src="scripts/services/sh-social-constant.js"></script>
+    <script src="scripts/services/sh-contactinfo-constant.js"></script>
+
+    <script src="scripts/controllers/sh-main-controller.js"></script>
+    <script src="scripts/controllers/sh-about-controller.js"></script>
+    <script src="scripts/controllers/sh-portfolio-controller.js"></script>
+    <script src="scripts/controllers/sh-contact-controller.js"></script>
+    <script src="scripts/controllers/sh-test-controller.js"></script>
+
+    <script src="scripts/directives/sh-contact-form-directive.js"></script>
+
+    <script src="scripts/filters/sh-add-dash-filter.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

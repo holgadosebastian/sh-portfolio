@@ -1,0 +1,78 @@
+<form class="sh-contact-form">
+  <div class="contact-form-inner row">
+    <div class="col-sm-6">
+      <div class="sh-input sh-form-item"
+        ng-class="{ '-has-error' : status.name === 'error', '-is-valid' : status.name === 'ok'}">
+        <label for="contact-name">Name</label>
+        <div>
+          <input ng-model="form.name" id="contact-name" ng-blur="validateName()" ng-click="status.name = ''">
+        </div>
+        <span class="form-item-error">
+          There must be a name
+        </span>
+      </div>
+
+      <div class="sh-input sh-form-item -margin-top-medium"
+        ng-class="{ '-has-error' : status.email === 'error', '-is-valid' : status.email === 'ok'}">
+        <label for="contact-mail">E-mail</label>
+        <div>
+          <input ng-model="form.email" id="contact-mail" ng-blur="validateEmail()" ng-click="status.email = ''">
+        </div>
+        <span class="form-item-error">
+          Must be a valid e-mail
+        </span>
+      </div>
+
+      <div class="sh-select sh-form-item -margin-top-medium"
+        ng-class="{'-is-valid' : status.find === 'ok'}">
+        <label for="contact-find">How did you find me?</label>
+        <div>
+          <select ng-model="form.find" id="contact-find"  ng-blur="validateFind()">
+            <option value="select" disabled selected>Select an option</option>
+            <option value="linkedin">Linked In</option>
+            <option value="behance">Behance</option>
+            <option value="twitter">Twitter</option>
+            <option value="brandedme">Branded Me</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="sh-textarea sh-form-item"
+        ng-class="{ '-has-error' : status.message === 'error', '-is-valid' : status.message === 'ok'}">
+        <label for="contact-message">Message</label>
+        <textarea ng-model="form.message" id="contact-message" ng-blur="validateMessage()" ng-click="status.message = ''"></textarea>
+        <span class="form-item-error">
+          There must be a message
+        </span>
+      </div>
+    </div>
+
+    <div ng-show="isSending">
+      <div ng-include src="'views/partials/sh-loader.html'"></div>
+    </div>
+  </div>
+  <span class="sh-button -teal -md -text -margin-top-big -block-sm -display-xs ng-cloak"
+    ng-show="sentStatus === 'success'">
+    <span class="fa fa-check-circle"></span> Message sent sucessfully!
+  </span>
+  <span class="sh-button -red -md -text -margin-top-big -block-sm -display-xs ng-cloak"
+    ng-show="sentStatus === 'error'">
+    <span class="fa fa-exclamation-circle"></span> There was an error, please try again
+  </span>
+  <span class="sh-button -red -md -full -margin-top-big -block-sm"
+    ng-class="{ '-loading' : isSending }"
+    ng-click="send()">
+    <span>Send</span>
+    <span>Sending...</span>
+  </span>
+  <span class="sh-button -teal -md -text -margin-top-big -block-sm -hide-xs ng-hide"
+    ng-show="sentStatus === 'success'">
+    <span class="fa fa-check-circle"></span> Message sent sucessfully!
+  </span>
+  <span class="sh-button -red -md -text -margin-top-big -block-sm -hide-xs ng-hide"
+    ng-show="sentStatus === 'error'">
+    <span class="fa fa-exclamation-circle"></span> There was an error, please try again
+  </span>
+</form>

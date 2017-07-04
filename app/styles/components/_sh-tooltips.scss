@@ -1,0 +1,60 @@
+// Vars
+$sh-tooltip-bg-color: $sh-gray-light-1;
+$sh-font-color: $sh-gray-dark-1;
+$sh-border-color: $sh-teal;
+
+// Mixins
+
+// CSS
+
+.sh-tooltip {
+  opacity: 0;
+  visibility: hidden;;
+  @include box-sizing(border-box);
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -80px;
+  padding: 10px;
+  width: 160px;
+  color: $sh-font-color;
+  line-height: 1;
+  background-color: $sh-tooltip-bg-color;
+  border-style: solid;
+  border-color: $sh-border-color;
+  border-width: 0;
+  border-bottom-width: 4px;
+  @include transition(all 0.5s ease);
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: $sh-border-color transparent transparent transparent;
+  }
+}
+
+.sh-tooltip--trigger {
+  position: relative;
+
+  &:hover {
+    .sh-tooltip {
+      opacity: 1;
+      visibility: visible;
+      bottom: 40px;
+    }
+  }
+}
+
+.-show-tooltip {
+  position: relative;
+  .sh-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: 40px;
+  }
+}

@@ -1,0 +1,177 @@
+.sh-portfolio-view {
+
+	main > .row {
+		position: relative;
+	}
+
+	.portfolio-item {
+		margin-top: 15px;
+		cursor: pointer;
+
+		.item-container {
+			position: relative;
+			height: 250px;
+			background-size: cover;
+			background-position: center;
+			background-color: $sh-gray-light-1;
+		}
+
+		.item-label {
+			position: absolute;
+			top: 15px;
+			left: -10px;
+			margin-right: 50px;
+			padding: 10px;
+			background-color: $sh-teal;
+			@include transition(left 0.1s ease);
+
+			h3 {
+				color: #FFF;
+			}
+		}
+
+		.item-link {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			top: 0;
+			padding: 5px;
+			text-align: center;
+			background-color: $sh-red;
+			opacity: 0;
+			@include transition(opacity 0.5s ease);
+
+			.wrapper {
+				display: table;
+				width: 100%;
+				height: 240px;
+			}
+
+			.inner {
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			p {
+				color: #FFF;
+			}
+
+			.intro {
+				position: relative;
+				top: -10px;
+				margin-bottom: 5px;
+				font-size: 16px;
+				@include transition(top 0.5s ease);
+			}
+
+			.full {
+				font-family: $sh-font-stack-primary;
+				font-size: 30px;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+		}
+
+		&.-mock {
+			@media #{$bp-smartphone} {
+				&+.-mock {
+					display: none;
+				}
+			}
+
+			.item-label {
+				width: 200px;
+				height: 44px;
+				background-color: $sh-gray-light-2;
+			}
+		}
+
+		&:hover {
+
+			.item-label {
+				left: 0;
+			}
+
+			.item-link {
+				opacity: 1;
+
+				.intro {
+					top: 0;
+				}
+			}
+		}
+	}
+
+	.portfolio-opensource {
+		margin-top: 30px;
+	}
+
+	.repositories {
+		padding-left: 0;
+
+		& > li {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-align-items: center;
+			align-items: center;
+			list-style: none;
+
+			&:not(:first-child) {
+				margin-top: 10px;
+
+				@media #{$bp-from-tablet} {
+					margin-top: 15px;
+				}
+			}
+		}
+
+		.repository-info {
+			-webkit-flex-grow: 10;
+			flex-grow: 10;
+
+			span {
+				font-family: $sh-font-stack-secondary;
+				font-size: 16px;
+				font-weight: 300;
+				transition: opacity 0.3s ease;
+			}
+		}
+
+		h3 {
+			display: inline-block;
+
+			&:hover + span {
+				opacity: 1;
+			}
+		}
+
+		.repository-stats {
+			font-size: 20px;
+			color: $sh-gray-dark-2;
+	    white-space: nowrap;
+
+			span {
+				display: inline-block;
+				margin-left: 15px;
+			}
+		}
+	}
+
+	.project-modal {
+		.paragraph-column {
+			@media #{$bp-to-tablet} {
+				margin-top: 15px;
+			}
+
+			p {
+				word-wrap: break-word;
+			}
+		}
+
+		.paragraph-footer {
+			padding-top: 10px;
+			border-top: 1px solid $sh-gray-dark-3;
+		}
+	}
+}

@@ -1,0 +1,215 @@
+// Vars
+
+$colors: (
+	red: ($sh-red, $sh-red-lighter, $sh-red-darker),
+	blue: ($sh-blue, $sh-blue-lighter, $sh-blue-darker),
+	teal: ($sh-teal, $sh-teal-lighter, $sh-teal-darker),
+	gray: ($sh-gray-dark-3, $sh-gray-dark-4, $sh-gray-dark-2),
+	'white': (#FFF, #FFF, #FFF)
+);
+
+$sizes: (
+	sm: (5, 30, $sh-font-size-7, 1, 80),
+	md: (10, 35, $sh-font-size-6, 2, 100),
+	lg: (15, 40, $sh-font-size-5, 2, 120)
+);
+
+// Mixins
+
+// CSS
+.sh-button {
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	font-family: $sh-font-stack-primary;
+	cursor: pointer;
+	text-align: center;
+	border-style: solid;
+	border-color: transparent;
+	transition: background-color 0.2s ease-in-out;
+	text-decoration: none;
+	overflow: hidden;
+
+	&:hover,
+	&:focus,
+	&:visited {
+		text-decoration: none;
+	}
+
+	span {
+		&:nth-child(2) {
+			display: none;
+			position: absolute;
+			left: 20px;
+			bottom: 5px;
+		}
+	}
+
+	&:before {
+		display: none;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 0;
+		background-color: $sh-gray-dark-1;
+		animation: loading-button-bg 2s infinite;
+	}
+
+	&.-disabled {
+		background-color: $sh-gray-light-1;
+		color: $sh-gray-dark-1;
+		cursor: not-allowed;
+	}
+
+	&.-loading {
+		background-color: $sh-gray-light-2 !important;
+
+		&:hover {
+			background-color: $sh-gray-light-2 !important;
+		}
+
+		&:before {
+			display: block;
+		}
+
+		span {
+			&:first-child {
+				opacity: 0;
+			}
+
+			&:nth-child(2) {
+				display: block;
+			}
+		}
+	}
+
+	@each $name, $size in $sizes {
+		&.-#{$name} {
+			padding: 0 #{nth( $size, 1 )}px;
+			height: #{nth( $size, 2 )}px;
+			font-family: $sh-font-stack-primary;
+			border-width: #{nth( $size, 4 )}px;
+			transition: background-color 0.2s ease-in-out;
+			border-radius: #{nth( $size, 2 ) / 2}px;
+
+			span {
+				&:first-child {
+					line-height: #{nth( $size, 2 ) - 2 * nth( $size, 4 )}px;
+					font-size: nth( $size, 3 );
+				}
+			}
+		}
+	}
+
+	&.-full,
+	&.-border {
+		@each $name, $size in $sizes {
+			&.-#{$name} {
+				min-width: #{nth( $size, 5 )}px;
+			}
+		}
+	}
+
+	&.-full {
+		color: #FFF;
+
+		@each $name, $color in $colors {
+			&.-#{$name} {
+				background-color: nth( $color, 1);
+
+				&:hover {
+					background-color: nth( $color, 2);
+				}
+
+				&:active {
+					background-color: nth( $color, 3);
+				}
+
+				&:before {
+					background-color: nth( $color, 1);
+				}
+			}
+		}
+
+		&.-white {
+			@each $name, $color in $colors {
+				&.-and-#{$name} {
+					&:hover {
+						color: nth( $color, 1);
+					}
+				}
+			}
+		}
+	}
+
+	&.-border {
+		border-style: solid;
+		border-width: 2px;
+
+		@each $name, $color in $colors {
+			&.-#{$name} {
+				color: nth( $color, 1);
+				border-color: nth( $color, 1);
+
+				&:hover {
+					color: #FFF;
+					background-color: nth( $color, 1);
+				}
+
+				&:active {
+					background-color: nth( $color, 3);
+					border-color: nth( $color, 3);
+				}
+			}
+		}
+
+		&.-white {
+			@each $name, $color in $colors {
+				&.-and-#{$name} {
+					&:hover {
+						color: nth( $color, 1);
+					}
+				}
+			}
+		}
+	}
+
+	&.-link {
+		text-decoration: underline;
+
+		&:hover {
+			color: #FFF;
+		}
+
+		@each $name, $color in $colors {
+			&.-#{$name} {
+				color: nth( $color, 1);
+
+				&:hover {
+					color: nth( $color, 2);
+				}
+
+				&:active {
+					color: nth( $color, 3);
+				}
+			}
+		}
+	}
+
+	&.-text {
+		cursor: text;
+
+		@each $name, $color in $colors {
+			&.-#{$name} {
+				color: nth( $color, 1);
+			}
+		}
+	}
+}
+
+@keyframes loading-button-bg {
+	0%   { width: 0; }
+  100% { width: 100%; }
+}

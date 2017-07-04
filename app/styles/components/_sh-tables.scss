@@ -1,0 +1,50 @@
+.sh-table {
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+
+  thead {
+    font-family: $sh-font-stack-primary;
+    color: $sh-gray-dark-2;
+    border-bottom: 2px solid $sh-blue;
+  }
+
+  tbody {
+    font-family: $sh-font-stack-secondary;
+    color: $sh-gray-dark-4;
+    background-color: $sh-gray-light-1;
+  }
+
+  th,
+  td {
+    padding: 5px 8px;
+  }
+
+  tbody {
+    tr {
+      position: relative;
+      border-bottom: 1px solid $sh-blue;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &.-font-lg {
+    thead {
+      font-size: $sh-font-size-4;
+    }
+
+    tbody {
+      font-size: $sh-font-size-5;
+    }
+  }
+
+  &.-gutters-lg {
+    th,
+    td {
+      padding: 10px 12px;
+    }
+  }
+}

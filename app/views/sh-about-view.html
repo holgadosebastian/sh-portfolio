@@ -1,0 +1,131 @@
+<main class="sh-about-view">
+  <section class="about sh-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="intro-paragraph">
+            <h1 class="-margin-bottom-large">Front End Developer</h1>
+
+            <h2>
+              I build Responsive Single Page Applications using Angular, SASS and a variety of automation tools.
+              <br>
+              <br>
+              Are you hiring or do you have a project?
+            </h2>
+
+            <div class="intro-calls -margin-top-large">
+
+              <span class="sh-button -red -lg -full -block-sm"
+                ng-click="about.showContactModal = true; lockScroll.desktop = true;">
+                <span>Contact me</span>
+              </span>
+
+              <a href="#/portfolio" class="sh-button -white -and-gray -lg -border -block-sm -margin-top-medium-sm">
+                <span>View my portfolio</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <sh-modal main-text="Get in touch" sub-text="Complete the form below to send me a message" background-color="teal" show-on="about.showContactModal">
+      <contact-form></contact-form>
+    </sh-modal>
+  </section>
+
+  <div class="additional-info -padding-top-big -padding-bottom-large">
+
+    <section class="skills -margin-top-huge">
+      <div class="container">
+        <h2 class="-h1 -text-white">My Skills</h2>
+
+        <table class="sh-table -font-lg -gutters-lg -margin-top-large -hide-xs">
+          <thead>
+            <tr>
+              <th class="-text-white"><h3>CSS</h3></th>
+              <th class="-text-white"><h3>Javascript</h3></th>
+              <th class="-text-white"><h3>HTML</h3></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CSS3, SASS/SCSS, Object Oriented CSS, SMACSS, BEM, Flex Grid, Custom Properties</td>
+              <td>AngularJS, jQuery, Grunt, NodeJS, Object Oriented Programing, Functional JavaScript, JavaScript Design Patterns</td>
+              <td>HTML5, Semantic HTML, JADE, SEO and Usability HTML</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="-display-xs">
+          <table class="sh-table -font-lg -gutters-lg -margin-top-medium">
+            <thead>
+              <tr>
+                <th class="-text-white">CSS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CSS3, SASS/SCSS, Object Oriented CSS, SMACSS, BEM</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="sh-table -font-lg -gutters-lg -margin-top-medium">
+            <thead>
+              <tr>
+                <th class="-text-white">Javascript</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Object Oriented Programing, Functional JavaScript, JavaScript Design Patterns, AngularJS, jQuery, Grunt, NodeJS</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="sh-table -font-lg -gutters-lg -margin-top-medium">
+            <thead>
+              <tr>
+                <th class="-text-white">HTML</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HTML5, Semantic HTML, JADE, SEO and Usability HTML</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects -margin-top-huge" ng-if="!about.projectsError">
+      <div class="container">
+        <h2 class="-h1 -text-white -margin-bottom-large">My latest projects</h2>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 -margin-bottom-medium"
+            ng-repeat="project in about.projects | limitTo : 3">
+            <div class="sh-card -sh-shadow-large">
+              <div class="card-header">
+                <img ng-src="{{ project.covers['404'] }}" alt="{{ project.name }}" title="{{ project.name }}" />
+              </div>
+              <div class="card-body">
+                <div class="card-title">
+                  <h3>{{ project.name }}</h3>
+                </div>
+                <p>{{ project.fields | addDash }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <a href="#/portfolio" class="sh-button -red -lg -full -block-sm -margin-top-medium">
+            <span>View my portfolio</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

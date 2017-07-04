@@ -1,0 +1,66 @@
+.sh-contact-view {
+  .contact-info {
+    padding-left: 0;
+
+    @media #{$bp-from-tablet-to-laptop} {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+    }
+
+    li {
+      list-style: none;
+
+      &:nth-child(n + 1) {
+        @media #{$bp-smartphone} {
+          margin-top: 15px;
+        }
+
+        @media #{$bp-desktop} {
+          margin-top: 20px;
+        }
+      }
+
+      &> div {
+        display: inline-block;
+        padding-left: 50px;
+        position: relative;
+        cursor: pointer;
+
+        p,
+        h4 {
+          transition: color 0.5s ease;
+        }
+
+        &:hover {
+
+          .contact-icon {
+            color: #FFF;
+            background-color: $sh-teal;
+            border-color: $sh-teal;
+          }
+
+          p,
+          h4 {
+            color: $sh-teal
+          }
+        }
+      }
+    }
+
+    .contact-icon {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -20px;
+      @include square(40);
+      font-size: 18px;
+      line-height: 32px;
+      text-align: center;
+      border: 4px solid gray;
+      border-radius: 50%;
+      transition: all 0.5s ease;
+    }
+  }
+}

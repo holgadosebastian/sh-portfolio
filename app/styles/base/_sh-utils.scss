@@ -1,0 +1,156 @@
+// Vars
+
+$colors: (
+  main: $sh-red,
+  secondary: $sh-blue,
+  tertiary: $sh-teal,
+  error: $sh-red-darker,
+  success: $sh-teal-darker,
+  dark: $sh-gray-dark-1,
+  light: $sh-gray-light-1,
+  white: #FFF
+);
+
+$spacing: (
+  huge: 30px,
+  large: 20px,
+  big: 15px,
+  medium: 10px,
+  small: 5px
+);
+
+// Mixins
+
+
+//CSS
+@each $name, $color in $colors {
+  .-text-#{$name} {
+    color: $color;
+  }
+
+  .-background-#{$name} {
+    background-color: $color;
+  }
+}
+
+@each $size, $dimension in $spacing {
+  .-margin-#{$size} {
+    margin: $dimension;
+  }
+
+  .-margin-top-#{$size} {
+    margin-top: $dimension;
+  }
+
+  .-margin-right-#{$size} {
+    margin-right: $dimension;
+  }
+
+  .-margin-bottom-#{$size} {
+    margin-bottom: $dimension;
+  }
+
+  .-margin-left-#{$size} {
+    margin-left: $dimension;
+  }
+
+  .-padding-#{$size} {
+    padding: $dimension;
+  }
+
+  .-padding-top-#{$size} {
+    padding-top: $dimension;
+  }
+
+  .-padding-right-#{$size} {
+    padding-right: $dimension;
+  }
+
+  .-padding-bottom-#{$size} {
+    padding-bottom: $dimension;
+  }
+
+  .-padding-left-#{$size} {
+    padding-left: $dimension;
+  }
+
+  @media #{$bp-smartphone} {
+    .-margin-#{$size}-sm {
+      margin: $dimension;
+    }
+
+    .-margin-top-#{$size}-sm {
+      margin-top: $dimension;
+    }
+
+    .-margin-right-#{$size}-sm {
+      margin-right: $dimension;
+    }
+
+    .-margin-bottom-#{$size}-sm {
+      margin-bottom: $dimension;
+    }
+
+    .-margin-left-#{$size}-sm {
+      margin-left: $dimension;
+    }
+
+    .-padding-#{$size}-sm {
+      padding: $dimension;
+    }
+
+    .-padding-top-#{$size}-sm {
+      padding-top: $dimension;
+    }
+
+    .-padding-right-#{$size}-sm {
+      padding-right: $dimension;
+    }
+
+    .-padding-bottom-#{$size}-sm {
+      padding-bottom: $dimension;
+    }
+
+    .-padding-left-#{$size}-sm {
+      padding-left: $dimension;
+    }
+  }
+}
+
+.-block-all {
+  display: block !important;
+  width: 100% !important;
+}
+
+.-block-sm {
+  @media #{$bp-smartphone} {
+    display: block;
+    width: 100%;
+  }
+}
+
+// Visibility
+
+.-display-xs {
+  @media #{$bp-from-tablet} {
+    display: none !important;
+  }
+}
+
+.-hide-xs {
+  @media #{$bp-smartphone} {
+    display: none !important;
+  }
+}
+
+// Shadow
+$shadow-color: rgba(0,0,0, 0.2);
+.-sh-shadow-large {
+  @include box-shadow(4px 4px $shadow-color);
+}
+.-sh-shadow-medium {
+  @include box-shadow(2px 2px $shadow-color);
+}
+.-sh-shadow-small {
+  @include box-shadow(1px 1px $shadow-color);
+}

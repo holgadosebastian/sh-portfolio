@@ -1,0 +1,148 @@
+// Vars
+$colors: (
+	"red": ( color: $sh-red, img: $sh-pattern-red-url),
+	"blue": ( color: $sh-blue, img: $sh-pattern-blue-url),
+	"teal": ( color: $sh-teal, img: $sh-pattern-teal-url)
+);
+
+// Mixins
+
+// CSS
+
+.sh-modal {
+	position: fixed;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	justify-content: center;
+	-webkit-justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	overflow-y: auto;
+
+	.modal-overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(#000, 0.2);
+		z-index: 5;
+	}
+
+	&.-show {
+		opacity: 1;
+		visibility: visible;
+
+		.modal-container {
+			top: 0;
+			opacity: 1;
+		}
+	}
+
+	.modal-container {
+		position: relative;
+		width: 100%;
+		background-color: #FFF;
+		border: 5px solid #FFF;
+		opacity: 0;
+		z-index: 10;
+
+		@media #{$bp-smartphone} {
+			min-height: 100vh;
+		}
+
+		@media #{$bp-tablet} {
+			width: 600px;
+		}
+
+		@media #{$bp-from-tablet} {
+			top: -50px;
+			margin: 50px auto 0;
+			transition: top 0.5s ease, opacity 0.5s ease;
+		}
+
+		@media #{$bp-from-laptop} {
+			width: 800px;
+		}
+
+		.modal-header {
+			position: relative;
+			background-color: #333;
+			padding: 10px;
+
+			@media #{$bp-from-tablet} {
+				padding: 15px;
+			}
+
+			p {
+				color: #FFF;
+
+				&:first-child {
+					padding-right: 40px;
+				}
+			}
+
+			p.-h3 {
+				margin-top: 10px;
+			}
+
+			.modal-close {
+				position: absolute;
+				right: 10px;
+				top: 11px;
+				@include square(30);
+				line-height: 28px;
+				text-align: center;
+				color: #FFF;
+				border: 1px solid #FFF;
+				border-radius: 50%;
+				cursor: pointer;
+
+				@media #{$bp-from-tablet} {
+					right: 15px;
+					top: 15px;
+				}
+
+				&:hover {
+					color: #333;
+					background-color: #fff;
+				}
+			}
+		}
+
+		.modal-body {
+			padding: 10px;
+
+			@media #{$bp-from-tablet} {
+				padding: 15px;
+			}
+		}
+
+		.modal-footer {
+			text-align: right;
+		}
+	}
+
+	@each $color, $info in $colors {
+		&.-#{$color}-modal {
+			.modal-container {
+				.modal-header {
+					background-image: url(#{map-get($info, img)});
+
+					.modal-close {
+						&:hover {
+							color: #{map-get($info, color)};
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,75 @@
+// Vars
+$sh-panel-color-border: $sh-teal;
+
+//
+$sizes: (
+	lg: (25, 20, 15, 15, 12, 5, 15, 10, 10, 4),
+	md: (20, 16, 12, 12, 10, 5, 12, 8, 8, 2),
+	sm: (10, 10, 10, 10, 8, 5, 10, 8, 8, 1),
+);
+
+// Mixins
+
+// CSS
+.sh-panel {
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #ddd;
+	border-top-style: solid;
+	border-top-color: $sh-teal;
+
+	.panel-header {
+		padding-bottom: 20px;
+	}
+
+	h1, h2, h3, h4, h5, h6, {
+		color: #666;
+	}
+
+	p {
+		color: #555;
+	}
+
+	.panel-footer {
+		padding-top: 15px;
+	}
+
+	@each $size, $value in $sizes {
+		&.-#{$size} {
+			padding: #{nth( $value, 3)}px;
+			border-top-width: #{nth( $value, 10)}px;
+
+			.panel-header {
+				padding-bottom: #{nth( $value, 6)}px;
+			}
+
+			.panel-footer {
+				padding-top: #{nth( $value, 9)}px;
+			}
+
+			@media #{$bp-tablet} {
+				padding: #{nth( $value, 2)}px;
+
+				.panel-header {
+					padding-bottom: #{nth( $value, 5)}px;
+				}
+
+				.panel-footer {
+					padding-top: #{nth( $value, 8)}px;
+				}
+			}
+
+			@media #{$bp-from-laptop} {
+				padding: #{nth( $value, 1)}px;
+
+				.panel-header {
+					padding-bottom: #{nth( $value, 4)}px;
+				}
+
+				.panel-footer {
+					padding-top: #{nth( $value, 7)}px;
+				}
+			}
+		}
+	}
+}

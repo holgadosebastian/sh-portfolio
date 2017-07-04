@@ -1,0 +1,35 @@
+// Vars
+$sh-footer-bg-color: $sh-gray-light-2;
+$sh-footer-border-color: $sh-teal;
+$sh-footer-font-color: $sh-gray-dark-3;
+$sh-footer-icon-size: 48;
+
+// Mixins
+
+// CSS
+.sh-footer {
+  padding: 25px 0;
+  background-color: $sh-footer-bg-color;
+  border-top: 4px solid $sh-footer-font-color;
+
+  .social-footer {
+    .social-icon {
+      margin-top: 10px;
+      margin-right: 10px;
+      display: inline-block;
+      @include square($sh-footer-icon-size);
+      font-size: 18px;
+      color: $sh-footer-font-color;
+      line-height: #{$sh-footer-icon-size - 8}px;
+      text-align: center;
+      border-radius: 50%;
+      border: 4px solid $sh-footer-border-color;
+      transition: all 0.4s ease;
+
+      &:hover {
+        color: #FFF;
+        background-color: $sh-teal;
+      }
+    }
+  }
+}

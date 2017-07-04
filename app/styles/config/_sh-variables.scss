@@ -1,0 +1,65 @@
+// Colors
+$sh-red: #EE395B;
+$sh-red-lighter: lighten($sh-red, 10%);
+$sh-red-darker: darken($sh-red, 10%);
+
+$sh-teal: #69C7C2;
+$sh-teal-lighter: lighten($sh-teal, 10%);
+$sh-teal-darker: darken($sh-teal, 10%);
+
+$sh-blue: #4E84C4;
+$sh-blue-lighter: lighten($sh-blue, 10%);
+$sh-blue-darker: darken($sh-blue, 10%);
+
+$sh-gray-dark-1: #222;
+$sh-gray-dark-2: #3a3a3a;
+$sh-gray-dark-3: #595959;
+$sh-gray-dark-4: #666;
+
+$sh-gray-light-1: #f0f0f0;
+$sh-gray-light-2: #eee;
+$sh-gray-light-3: #ccc;
+$sh-gray-light-4: #aaa;
+
+// Fonts
+
+$sh-font-stack-primary: 'CooperHewitt', Arial;
+$sh-font-stack-secondary: 'Aileron', Arial;
+
+$sh-font-size-1: 36px;
+$sh-font-size-1b: 30px;
+$sh-font-size-1c: 28px;
+$sh-font-size-2: 24px;
+$sh-font-size-3: 22px;
+$sh-font-size-4: 20px;
+$sh-font-size-5: 16px;
+$sh-font-size-6: 15px;
+
+$sh-font-size-7: 13px;
+
+// Breakpoints
+
+$bp-desktop-after: '1200px';
+$bp-desktop-before: '1199px';
+$bp-laptop-after: '992px';
+$bp-laptop-before: '991px';
+$bp-tablet-after: '768px';
+$bp-tablet-before: '767px';
+$bp-smartphone-after: '480px';
+$bp-smartphone-before: '479px';
+
+$bp-desktop: 'screen and (min-width: #{$bp-desktop-after})';
+$bp-to-laptop: 'screen and (max-width: #{$bp-desktop-before})';
+$bp-from-laptop: 'screen and (min-width: #{$bp-laptop-after})';
+$bp-to-tablet: 'screen and (max-width: #{$bp-laptop-before})';
+$bp-from-tablet-to-laptop: 'screen and (min-width: #{$bp-tablet-after}) and (max-width: #{$bp-desktop-before})';
+$bp-from-tablet: 'screen and (min-width: #{$bp-tablet-after})';
+$bp-tablet: 'screen and (min-width: #{$bp-tablet-after}) and (max-width: #{$bp-laptop-before})';
+$bp-smartphone: 'screen and (max-width: #{$bp-tablet-before})';
+$bp-smartphone-sm: 'screen and (max-width: #{$bp-smartphone-before})';
+
+// Images
+
+$sh-pattern-red-url: 'images/sh-pattern-red.png';
+$sh-pattern-teal-url: 'images/sh-pattern-teal.png';
+$sh-pattern-blue-url: 'images/sh-pattern-blue.png';

@@ -1,0 +1,186 @@
+// Vars
+$sh-form-label-font: $sh-font-stack-secondary;
+$sh-form-field-color: $sh-blue;
+$sh-form-error-color: $sh-red-darker;
+$sh-form-ok-color: $sh-teal;
+$sh-form-font-size-lg: 18px;
+$sh-form-font-size-md: $sh-font-size-5;
+$sh-form-font-size-sm: $sh-font-size-6;
+$sh-form-color-bg: $sh-gray-light-1;
+$sh-form-color-inactive: $sh-gray-dark-1;
+
+// Mixins
+@mixin form-item-md() {
+	padding: 5px 8px;
+	width: 100%;
+	font-family: $sh-form-label-font;
+	font-size: $sh-form-font-size-lg;
+	color: $sh-form-field-color;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid $sh-form-color-inactive;
+	@include transition(border 0.5s ease);
+
+	&:focus {
+		border-color: $sh-form-field-color;
+	}
+
+	&:-webkit-autofill {
+		color: $sh-form-field-color;
+		background-color: transparent;
+	}
+}
+
+@mixin form-item-wrapper() {
+	position: relative;
+	background-color: $sh-form-color-bg;
+}
+
+// CSS
+.sh-form-item {
+	label {
+		display: block;
+		margin-bottom: 8px;
+		font-family: $sh-form-label-font;
+		font-size: $sh-form-font-size-md;
+		cursor: pointer;
+	}
+
+	select {
+		-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	}
+
+	.form-item-error {
+		position: relative;
+		display: none;
+		padding: 5px;
+		color: #FFF;
+		background-color: $sh-form-error-color;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 10px;
+			top: -16px;
+			border-style: solid;
+			border-width: 8px;
+			border-color: transparent transparent $sh-form-error-color transparent;
+			pointer-events: none;
+		}
+	}
+
+	&.-has-error {
+		.form-item-error {
+			display: block;
+		}
+
+		select, input, textarea {
+			color: $sh-form-error-color;
+			border-bottom-color: $sh-form-error-color;
+		}
+	}
+
+	&.-is-valid {
+		select, input, textarea {
+			color: $sh-form-ok-color;
+			border-bottom-color: $sh-form-ok-color;
+		}
+
+		&.sh-select > div {
+			&:before {
+				border-color: $sh-form-ok-color transparent transparent transparent;
+			}
+		}
+	}
+}
+
+.sh-select {
+
+	&>div {
+		@include form-item-wrapper();
+
+		&:before {
+			content: "";
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			margin-top: -4px;
+			border-width: 8px;
+			border-style: solid;
+			border-color: $sh-form-color-inactive transparent transparent;
+			pointer-events: none;
+		}
+
+		&>select {
+			@include form-item-md();
+		}
+	}
+}
+
+.sh-input {
+	&>div {
+		@include form-item-wrapper();
+
+		input {
+			@include form-item-md();
+		}
+	}
+}
+
+.sh-textarea {
+	textarea {
+		display: block;
+		@include form-item-md();
+		@include form-item-wrapper();
+		max-width: 100%;
+	}
+}
+
+.sh-radio {
+
+	label {
+		position: relative;
+		padding-left: 25px;
+
+		span {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			margin-top: -9px;
+			width: 18px;
+			height: 18px;
+			background-color: $sh-form-color-bg;
+			border-radius: 50%;
+
+			&:before {
+				display: none;
+				content: "";
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-top: -6px;
+				margin-left: -6px;
+				width: 12px;
+				height: 12px;
+				background-color: $sh-form-field-color;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	input[type='radio'] {
+		display: none;
+
+		&:checked {
+			&+label {
+				span {
+					&:before {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}

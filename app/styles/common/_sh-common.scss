@@ -1,0 +1,39 @@
+.sh-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.sh-container {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.sh-view {
+  flex-grow: 10;
+  overflow-x: hidden;
+}
+
+.sh-link {
+  color: $sh-teal;
+
+  &:hover {
+    color: $sh-teal-lighter;
+    text-decoration: underline;
+  }
+}
+
+.-lock-desktop {
+  overflow: hidden;
+}
+
+.-lock-tablet {
+  @media #{$bp-to-tablet} {
+    overflow: hidden;
+  }
+}
+
+.-lock-mobile {
+  @media #{$bp-smartphone} {
+    overflow: hidden;
+  }
+}

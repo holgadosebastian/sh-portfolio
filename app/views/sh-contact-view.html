@@ -1,0 +1,31 @@
+<div class="sh-contact-view sh-container container">
+	<header>
+		<h1 class="-text-tertiary">Get in touch</h1>
+		<h2 class="-h4 -margin-top-small">Find me on social media or send me a message using the form</h2>
+	</header>
+
+  <main class="-margin-top-large">
+		<div class="row">
+			<div class="col-lg-3">
+					<h3>Contact Info</h3>
+					<ul class="contact-info">
+						<li ng-repeat="item in contact.contactInfo">
+							<div
+								ng-click="contact.copyToClipboard( item )"
+								ng-class="{ '-show-tooltip' : item.copied }">
+								<span class="contact-icon" ng-class="'fa ' + item.icon"></span>
+								<p>{{ ::item.name }}</p>
+								<h4 class="-h5">{{ ::item.value }}</h4>
+								<span class="sh-tooltip">
+									<em class="-text-success"><i class="fa fa-check-circle"></i> Copied to clipboard</em>
+								</span>
+							</div>
+						</li>
+					</ul>
+			</div>
+			<div class="col-lg-9">
+				<contact-form></contact-form>
+			</div>
+		</div>
+	</main>
+</div>

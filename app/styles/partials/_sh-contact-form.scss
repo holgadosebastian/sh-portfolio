@@ -1,0 +1,15 @@
+.sh-contact-form {
+  .contact-form-inner {
+    position: relative;
+  }
+
+  .sh-textarea {
+    @media #{$bp-smartphone} {
+      margin-top: 10px;
+    }
+  }
+
+  textarea {
+    min-height: 163px;
+  }
+}

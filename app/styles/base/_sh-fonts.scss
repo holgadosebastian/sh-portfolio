@@ -1,0 +1,35 @@
+// Load fonts
+@font-face {
+  font-family: 'Aileron';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url("Aileron-Regular.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'Aileron';
+  font-style: normal;
+  font-weight: 600;
+  src: font-url("Aileron-SemiBold.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'CooperHewitt';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url("CooperHewitt-Medium.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'CooperHewitt';
+  font-style: normal;
+  font-weight: 700;
+  src: font-url("CooperHewitt-Bold.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'CooperHewitt';
+  font-style: normal;
+  font-weight: 300;
+  src: font-url("CooperHewitt-Light.otf") format('opentype');
+}

@@ -1,0 +1,16 @@
+@mixin pseudo-clearfix() {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin square( $size ) {
+	width: #{$size}px;
+	height: #{$size}px;
+}

@@ -1,0 +1,105 @@
+// Font mixins
+
+@mixin font-size-1() {
+	font-size: $sh-font-size-1;
+
+	@media #{$bp-tablet} {
+		font-size: $sh-font-size-1b;
+	}
+
+	@media #{$bp-smartphone} {
+		font-size: $sh-font-size-1c;
+	}
+}
+
+@mixin font-size-2() {
+	font-size: $sh-font-size-2;
+
+	@media #{$bp-smartphone} {
+		font-size: $sh-font-size-3;
+	}
+}
+
+@mixin font-size-3() {
+	font-size: $sh-font-size-3;
+
+	@media #{$bp-smartphone} {
+		font-size: $sh-font-size-4;
+	}
+}
+
+@mixin font-size-4() {
+	font-size: $sh-font-size-4;
+}
+
+@mixin font-size-5() {
+	font-size: $sh-font-size-5;
+}
+
+@mixin font-size-6() {
+	font-size: $sh-font-size-6;
+}
+
+@mixin font-size-7() {
+	font-size: $sh-font-size-7;
+}
+
+// Font classes
+
+h1, .-h1 {
+	font-family: $sh-font-stack-primary;
+	@include font-size-1();
+	font-weight: 300;
+}
+
+h2, .-h2 {
+	font-family: $sh-font-stack-primary;
+	@include font-size-2();
+}
+
+h3, .-h3 {
+	font-family: $sh-font-stack-primary;
+	@include font-size-3();
+}
+
+h4, .-h4 {
+	font-family: $sh-font-stack-secondary;
+	@include font-size-4();
+	font-weight: 700;
+}
+
+h5, .-h5 {
+	font-family: $sh-font-stack-secondary;
+	@include font-size-5();
+}
+
+h6, .-h6 {
+	font-family: $sh-font-stack-primary;
+	@include font-size-6();
+}
+
+p {
+	font-family: $sh-font-stack-secondary;
+	@include font-size-6();
+	color: $sh-gray-dark-3;
+}
+
+.-font-red {
+	color: $sh-red;
+}
+
+.-font-teal {
+	color: $sh-teal;
+}
+
+.-font-blue {
+	color: $sh-blue;
+}
+
+.-font-gray-dark {
+	color: $sh-gray-dark-1;
+}
+
+.-font-gray-light {
+	color: $sh-gray-light-1;
+}

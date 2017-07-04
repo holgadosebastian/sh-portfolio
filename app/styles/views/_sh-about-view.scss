@@ -1,0 +1,50 @@
+.sh-about-view {
+
+	.about {
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: column;
+		flex-direction: column;
+		-webkit-justify-content: center;
+		justify-content: center;
+		padding-top: 100px;
+		min-height: 100vh;
+		background-color: $sh-blue;
+		background-image: url('images/about-bg.jpg');
+		background-position: 80% center;
+    background-size: cover;
+
+		@media #{$bp-from-tablet} {
+			background-position: 70% center;
+		}
+	}
+
+	.intro-paragraph {
+		margin: 0 auto;
+
+		h1, h2, a {
+			color: #FFF;
+
+			&:hover,
+			&:focus {
+				color: #FFF;
+			}
+		}
+
+		h2 {
+			font-weight: 400;
+			letter-spacing: 1px;
+			line-height: 1.5;
+			text-shadow: 3px 3px rgba(#000, 0.4);
+
+			span, a {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.additional-info {
+		background-color: $sh-teal;
+	}
+}

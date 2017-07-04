@@ -1,0 +1,166 @@
+.sh-navbar {
+	position: relative;
+	@include pseudo-clearfix();
+	background-color: $sh-gray-light-2;
+	border-top: 4px solid $sh-teal;
+
+	@media #{$bp-smartphone} {
+		z-index: 10;
+	}
+
+	&.-transparent {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: transparent;
+
+		.sections li a:not(.sh-button) {
+			color: #FFF;
+		}
+	}
+
+	.logo {
+		float: left;
+
+		a {
+			font-family: $sh-font-stack-secondary;
+			font-size: 24px;
+			color: $sh-red;
+			font-weight: 600;
+			line-height: 60px;
+			letter-spacing: 0.5px;
+			animation-duration: 4s;
+			animation-iteration-count: infinite;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				color: $sh-red-lighter;
+			}
+		}
+	}
+
+	.dropdown-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 60px;
+		height: 60px;
+		color: $sh-teal;
+		font-size: 28px;
+		line-height: 60px;
+		text-align: center;
+		cursor: pointer;
+
+		@media #{$bp-from-tablet} {
+			display: none;
+		}
+	}
+
+	.sections {
+		padding-left: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+
+		@media #{$bp-smartphone} {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 0;
+			right: 0;
+			margin-top: -113px;
+			padding: 0 15px;
+			text-align: center;
+			z-index: 10;
+
+			&.-show {
+				display: block;
+			}
+		}
+
+		@media #{$bp-from-tablet} {
+			float: right;
+		}
+
+		li {
+			font-family: $sh-font-stack-primary;
+			@include font-size-4();
+			list-style: none;
+
+			@media #{$bp-smartphone} {
+				border-bottom: 1px solid #FFF;
+
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+
+			@media #{$bp-from-tablet} {
+				float: left;
+			}
+
+			&.-active {
+				a:not(.sh-button) {
+					@media #{$bp-from-tablet} {
+						color: $sh-teal;
+					}
+				}
+
+			}
+
+			a {
+				&:not(.sh-button) {
+					display: block;
+					padding: 0 15px;
+					color: $sh-gray-dark-4;
+					line-height: 56px;
+					border-bottom: 4px solid transparent;
+					transition: color 0.45s ease, border-bottom 0.6s ease;
+
+					&:hover,
+					&:focus {
+						color: $sh-teal-lighter;
+						text-decoration: none;
+					}
+
+					@media #{$bp-smartphone} {
+						display: block;
+						font-size: 36px;
+						color: #FFF;
+						font-weight: 700;
+						line-height: 56px;
+						text-transform: uppercase;
+					}
+				}
+
+				&.sh-button {
+					margin-top: 8px;
+				}
+			}
+		}
+	}
+
+	.overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba($sh-teal-darker, 0.9);
+
+		@media #{$bp-smartphone} {
+			display: block;
+		}
+
+		.close {
+			color: #FFF;
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 32px;
+			cursor: pointer;
+		}
+	}
+}
