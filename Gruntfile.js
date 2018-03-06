@@ -63,16 +63,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // configure nodemon
-    nodemon: {
-      dev: {
-        script: 'server.js',
-        options: {
-          args: ['dev']
-        }
-      }
-    },
-
     // The actual grunt server settings
     connect: {
       options: {
@@ -428,7 +418,7 @@ module.exports = function (grunt) {
         'svgmin'
       ],
       dev: [
-        'nodemon:dev',
+        // 'nodemon:dev', Replace for something else
         'watch'
       ]
     },
@@ -441,9 +431,6 @@ module.exports = function (grunt) {
       }
     }
   });
-
-  // load nodemon
-  grunt.loadNpmTasks('grunt-nodemon');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -474,14 +461,14 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'wiredep',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma'
-  ]);
+  // grunt.registerTask('test', [
+  //   'clean:server',
+  //   'wiredep',
+  //   'concurrent:test',
+  //   'autoprefixer',
+  //   'connect:test',
+  //   'karma'
+  // ]);
 
   grunt.registerTask('build', [
     'clean:dist',
@@ -502,11 +489,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
+    // 'test',
     'build'
-  ]);
-
-  grunt.registerTask('getup', [
-    'nodemon:dev'
   ]);
 };
