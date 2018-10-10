@@ -37,7 +37,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "supervisor server.js"
+    "start": "node server.js"
   },
   "private": true,
   "main": "server.js"
