@@ -5,10 +5,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var server_port = process.env.PORT || 5000;
 
-var environment = process.argv[2];
+var environment = process.argv[2] || 'prod';
 
 if ( environment === 'dev' ) {
   app
@@ -28,6 +27,6 @@ var mailerRoutes = require('./routes/mailerRoutes');
 app.use('/portfolio', portfolioRoutes);
 app.use('/mailer', mailerRoutes);
 
-app.listen(server_port, server_ip_address, function(){
-  console.log('Listening on ' + server_ip_address + ', server_port ' + server_port);
+app.listen(server_port, function(){
+  console.log('Listening on server_port ' + server_port);
 });
